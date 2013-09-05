@@ -1,0 +1,36 @@
+<html>
+<head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+
+    $('#input').change(function() {
+        var str = $('#input').val();
+        var n = str.split(" ");
+        if (parseFloat(n[1]) < 0) {
+           $dec = parseFloat(n[1].replace(/[^0-9.-]/g,''))-parseFloat(n[2].replace(/[^0-9.]/g,'')/60)-parseFloat(n[3].replace(/[^0-9.]/g,'')/3600)
+        } else {
+           $dec = parseFloat(n[1].replace(/[^0-9.]/g,''))+parseFloat(n[2].replace(/[^0-9.]/g,'')/60)+parseFloat(n[3].replace(/[^0-9.]/g,'')/3600)
+        }
+        $('#output').val($dec);
+        $('#output').select();
+        return false;
+    });
+    
+    $('#input').click(function() {
+        $('#input').val('');
+    })
+});
+</script>
+</head>
+<body>
+<h1>Latitude and Longitude Degree, Minute, Seconds to Decimal Converter</h1>
+Example: Lat: 42&deg; 38' 55.4676"<br />
+<input type="text" id="input" style="height:30px; width:1000px">
+
+<input id="output" type="text" style="height:30px; width:1000px">
+<br />
+<!-- just for users that think they need a button ;) --> 
+<input type="button" value="Convert" />
+</body>
+</html>
